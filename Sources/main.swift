@@ -26,6 +26,7 @@ let _ = semaphore.wait(timeout: DispatchTime.distantFuture)
     
 if let error = error {
     print("\(error)") // Segmentetion fault on Linux
+    print("This problem is solved!😄")
 }else{
     print("Test failed.")
 }
