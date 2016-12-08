@@ -1,9 +1,8 @@
 import Foundation
 import Dispatch
 
-//#if os(Linux)
-    
-guard let url = URL(string: "http://0.0.0.0" ) // Network Error
+
+guard let url = URL(string: "https://hogehoge.api.github.com/" ) // Network Error
     else{ fatalError() }
     
 guard let body = try? JSONSerialization.data(withJSONObject: [ "test" : "test" ], options: JSONSerialization.WritingOptions())
