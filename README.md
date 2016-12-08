@@ -2,6 +2,8 @@
 This Project is examining when segmentation fault by URLSession on Linux.
 
 This problem no happen on macOS and iOS.
+I found it when I was writing [this library](https://github.com/iq3addLi/WebStruct)
+
 # Environment at problem discovery
 
 | key        | value          |
