@@ -1,8 +1,10 @@
 # USSegFault
 This Project is examining when segmentation fault by URLSession on Linux.
-This problem no happen on macOS and iOS.
+It is no happen on macOS and iOS.
 
 I found it when I was writing [this library](https://github.com/iq3addLi/WebStruct)
+
+Sended [bug report](https://bugs.swift.org/browse/SR-3365).
 
 # Environment at problem discovery
 
