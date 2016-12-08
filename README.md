@@ -10,7 +10,7 @@ I found it when I was writing [this library](https://github.com/iq3addLi/WebStru
 | --------------- |:---------------:|
 | OS | Ubuntu 16.04 |
 | Swift | 3.0.1 |
-| machine | AWS t.nano Instance |
+| Build | Debug and Release |
 
 # What of problem?
 If an error is contained in the completionHandler of URLSessionDataTask, passing it to the local variable across block will destroy the contents of Optional and generate a segmentation fault when accessing.
@@ -34,6 +34,18 @@ if let error = error {
 }else{
     print("Test failed.")
 }
+```
+
+## Execute log on EC2
+```bash
+ubuntu@ip-*:~/USSegFault$ swift build
+ubuntu@ip-*:~/USSegFault$ .build/debug/USSegFault
+Segmentation fault (core dumped)
+ubuntu@ip-*:~/USSegFault$ swift build -c release
+Compile Swift Module 'USSegFault' (1 sources)
+Linking ./.build/release/USSegFault
+ubuntu@ip-*:~/USSegFault$ .build/release/USSegFault
+Segmentation fault (core dumped)
 ```
 
 # Resolution
