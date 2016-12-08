@@ -1,2 +1,42 @@
 # USSegFault
-This Project is examining when segmentation fault by URLSession.
+This Project is examining when segmentation fault by URLSession on Linux.
+
+This problem no happen on macOS and iOS.
+# Environment at problem discovery
+
+| key        | value          |
+| --------------- |:---------------:|
+| OS | Ubuntu 16.04 |
+| Swift | 3.0.1 |
+
+# What of problem?
+If an error is contained in the completionHandler of URLSessionDataTask, passing it to the local variable across block will destroy the contents of Optional and generate a segmentation fault when accessing.
+
+```swift
+let session = URLSession(configuration: URLSessionConfiguration.default, delegate:nil, delegateQueue: nil)
+let semaphore = DispatchSemaphore(value: 0) // Force synchronize
+    
+var data:Data?,response:URLResponse?,error:Swift.Error?
+let subtask = session.dataTask(with: request) { (d, r, e) in
+    data = d; response = r; error = e;
+    semaphore.signal()
+}
+subtask.resume()
+let _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+```
+
+```swift
+if let error = error {
+    print("\(error)") // Segmentetion fault on Linux
+}else{
+    print("Test failed.")
+}
+```
+
+# Resolution
+
+* I want URLSession to have synchronization processing.
+* Since problems do not occur in iOS and macOS, please correct it in the same way.
+
+
+Thanks! 
