@@ -10,6 +10,7 @@ I found it when I was writing [this library](https://github.com/iq3addLi/WebStru
 | --------------- |:---------------:|
 | OS | Ubuntu 16.04 |
 | Swift | 3.0.1 |
+| machine | AWS t.nano Instance |
 
 # What of problem?
 If an error is contained in the completionHandler of URLSessionDataTask, passing it to the local variable across block will destroy the contents of Optional and generate a segmentation fault when accessing.
