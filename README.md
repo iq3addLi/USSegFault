@@ -1,4 +1,11 @@
 # USSegFault
+```
+
+❗️I looked up this problem is solved on DEVELOPMENT-SNAPSHOT-2017-02-09-a.😁
+
+
+```
+
 This Project is examining when segmentation fault by URLSession on Linux.
 It is no happen on macOS and iOS.
 
@@ -13,6 +20,8 @@ Sended [bug report](https://bugs.swift.org/browse/SR-3365).
 | OS | Ubuntu 16.04 |
 | Swift | 3.0.1 |
 | Build | Debug and Release |
+
+
 
 # What of problem?
 If an error is contained in the completionHandler of URLSessionDataTask, passing it to the local variable across block will destroy the contents of Optional and generate a segmentation fault when accessing.
